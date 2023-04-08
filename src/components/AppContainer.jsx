@@ -34,6 +34,12 @@ export default function AppContainer() {
     setTodos(todos.filter(todo => todo.id !== id));
   }
 
+  function handleBlur(event, id) {
+    if (event.target.value === "" || !event.target.value) {
+      handleDelete(id)
+    }
+  }
+
   return (
     <>
       <TodoForm handleSubmit={addTodo} />
@@ -51,6 +57,9 @@ export default function AppContainer() {
                 }}
                 onChange={(event) => {
                   handleChange(event, todo.id);
+                }}
+                onBlur={(event) => {
+                  handleBlur(event, todo.id)
                 }}
               />
               <button onClick={() => {
