@@ -13,6 +13,7 @@ export default function AppContainer() {
       {
         content: newTodo,
         dateCreated: new Date().toLocaleTimeString(),
+        isDelete: false,
         id: id,
       },
     ]);
@@ -22,12 +23,15 @@ export default function AppContainer() {
     const changeIndex = todos.findIndex((todo) => {
       return todo.id === id;
     });
-  
 
-    setTodos(prevTodos =>{
+    setTodos((prevTodos) => {
       prevTodos[changeIndex].content = event.target.value;
-      return [...prevTodos]
-    })
+      return [...prevTodos];
+    });
+  }
+
+  function handleDelete(id) {
+    setTodos(todos.filter(todo => todo.id !== id));
   }
 
   return (
@@ -49,6 +53,9 @@ export default function AppContainer() {
                   handleChange(event, todo.id);
                 }}
               />
+              <button onClick={() => {
+                handleDelete(todo.id)
+              }}>delete</button>
               <br />
               <hr />
             </div>
