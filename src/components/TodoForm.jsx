@@ -16,6 +16,7 @@ export default function TodoForm({handleSubmit}) {
         onChange={(e) => {
           setInputValue(e.target.value);
         }}
+        required
       />
       <button type="submit">submit</button>
     </form>
