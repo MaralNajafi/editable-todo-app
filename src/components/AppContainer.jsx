@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import TodoForm from "./TodoForm";
+import Todo from "./Todo";
 
 export default function AppContainer() {
   const [todos, setTodos] = useState([]);
-  const [isReadonly, setIsReadonly] = useState(true);
   const [id, setId] = useState(0);
 
   function addTodo(newTodo) {
@@ -35,26 +35,6 @@ export default function AppContainer() {
     setTodos(todos.filter((todo) => todo.id !== id));
   }
 
-  function handleCheck(id) {
-    const changeIndex = todos.findIndex((todo) => {
-      return todo.id === id;
-    });
-    setTodos((prevTodos) => {
-      prevTodos[changeIndex] = {
-        ...prevTodos[changeIndex],
-        isChecked: true,
-        isDisabled: true,
-      };
-      return [...prevTodos];
-    });
-  }
-
-  function handleBlur(event, id) {
-    if (event.target.value === "" || !event.target.value) {
-      handleDelete(id);
-    }
-  }
-
   return (
     <>
       <TodoForm handleSubmit={addTodo} />
@@ -63,37 +43,16 @@ export default function AppContainer() {
           return (
             <div key={todo.id}>
               <br />
-              <input
-                type="text"
-                value={todo.content}
-                readOnly={isReadonly}
-                disabled={todo.isDisabled}
-                onClick={() => {
-                  setIsReadonly(false);
-                }}
-                onChange={(event) => {
-                  handleChange(event, todo.id);
-                }}
-                onBlur={(event) => {
-                  handleBlur(event, todo.id);
-                }}
-                className={todo.isChecked && "checked"}
-              />
-              <button
-                onClick={() => {
+              <Todo
+                content={todo.content}
+                handleDelete={() => {
                   handleDelete(todo.id);
                 }}
-              >
-                delete
-              </button>
-              <button
-                onClick={() => {
-                  handleCheck(todo.id);
+                handleEdit={(event) => {
+                  handleChange(event, todo.id);
                 }}
-                className={todo.isChecked && "d-none"}
-              >
-                check
-              </button>
+              />
+
               <br />
               <hr />
             </div>
