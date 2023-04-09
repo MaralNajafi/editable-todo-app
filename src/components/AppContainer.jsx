@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import TodoForm from "./TodoForm";
-import Todo from "./Todo";
+import TodosContainer from "./TodosContainer";
 
 export default function AppContainer() {
   const [todos, setTodos] = useState([]);
@@ -38,27 +38,7 @@ export default function AppContainer() {
   return (
     <>
       <TodoForm handleSubmit={addTodo} />
-      <div>
-        {todos.map((todo) => {
-          return (
-            <div key={todo.id}>
-              <br />
-              <Todo
-                content={todo.content}
-                handleDelete={() => {
-                  handleDelete(todo.id);
-                }}
-                handleEdit={(event) => {
-                  handleChange(event, todo.id);
-                }}
-              />
-
-              <br />
-              <hr />
-            </div>
-          );
-        })}
-      </div>
+      <TodosContainer todos={todos} handleChange={handleChange} handleDelete={handleDelete}/>
     </>
   );
 }
