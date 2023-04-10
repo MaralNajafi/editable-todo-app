@@ -55,7 +55,7 @@ export default function AppContainer() {
   }
 
   return (
-    <>
+    <div className="app-container">
       <TodoHeader
         todos={todos}
         handleSubmit={addTodo}
@@ -67,6 +67,6 @@ export default function AppContainer() {
         handleDelete={handleDelete}
         handleCheck={handleCheck}
       />
-    </>
+    </div>
   );
 }

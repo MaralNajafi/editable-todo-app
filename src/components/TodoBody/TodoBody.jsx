@@ -9,27 +9,25 @@ export default function TodosBody({
 }) {
   const todo = todos.map((todo) => {
     return (
-      <>
-        <Todo
-          key={todo.id}
-          content={todo.content}
-          isChecked={todo.isChecked}
-          handleDelete={() => {
-            handleDelete(todo.id);
-          }}
-          handleEdit={(event) => {
-            handleChange(event, todo.id);
-          }}
-          handleCheck={() => {
-            handleCheck(todo.id);
-          }}
-        />
-      </>
+      <Todo
+        key={todo.id}
+        content={todo.content}
+        isChecked={todo.isChecked}
+        handleDelete={() => {
+          handleDelete(todo.id);
+        }}
+        handleEdit={(event) => {
+          handleChange(event, todo.id);
+        }}
+        handleCheck={() => {
+          handleCheck(todo.id);
+        }}
+      />
     );
   });
   if (todos.length === 0) {
     return <p>No tasks yet</p>;
   } else {
-    return <ul>{todo}</ul>;
+    return <ol>{todo}</ol>;
   }
 }

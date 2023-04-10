@@ -1,7 +1,33 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+ol li input {
+  border: none;
+  border-bottom: 1px solid black;
+  margin-right: 1rem;
+}
+
+ol li input:focus {
+  outline: none;
+  border-bottom: 1px solid black;
+}
+
+form input {
+  margin-right: 5px;
+}
 .checked {
   text-decoration: line-through;
 }
 
 .d-none {
   display: none;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
