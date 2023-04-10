@@ -1,7 +1,7 @@
 import React from "react";
-import Todo from "./Todo";
+import Todo from "../Todo/Todo";
 
-export default function TodosContainer({
+export default function TodosBody({
   todos,
   handleDelete,
   handleChange,

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import TodoForm from "./TodoForm";
-import TodosContainer from "./TodosContainer";
+import TodoHeader from "../TodoHeader/TodoHeader";
+import TodoBody from "../TodoBody/TodoBody";
 
 export default function AppContainer() {
   const [todos, setTodos] = useState([]);
@@ -48,10 +48,20 @@ export default function AppContainer() {
     });
   }
 
+  function handleClearAll() {
+    if (todos.length > 0) {
+      setTodos([]);
+    }
+  }
+
   return (
     <>
-      <TodoForm handleSubmit={addTodo} />
-      <TodosContainer
+      <TodoHeader
+        todos={todos}
+        handleSubmit={addTodo}
+        handleClearAll={handleClearAll}
+      />
+      <TodoBody
         todos={todos}
         handleChange={handleChange}
         handleDelete={handleDelete}
