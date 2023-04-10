@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TodoHeader from "../TodoHeader/TodoHeader";
 import TodoBody from "../TodoBody/TodoBody";
+import SearchTodo from "../SearchTodo/SearchTodo";
 
 const AppContainer = () => {
   const [todos, setTodos] = useState([]);
@@ -76,14 +77,7 @@ const AppContainer = () => {
         handleClearAll={handleClearAll}
       />
       {todos.length > 0 && (
-        <input
-          type="text"
-          placeholder="search tasks"
-          value={searchedValue}
-          onChange={(event) => {
-            setSearchedValue(event.target.value);
-          }}
-        />
+        <SearchTodo searchedValue={searchedValue} setSearchedValue={setSearchedValue}/>
       )}
       <TodoBody
         todos={searchedTodos.length > 0 ? searchedTodos : todos}
