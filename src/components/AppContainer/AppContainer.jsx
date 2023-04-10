@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TodoHeader from "../TodoHeader/TodoHeader";
 import TodoBody from "../TodoBody/TodoBody";
 
 const AppContainer = () => {
   const [todos, setTodos] = useState([]);
+  const [searchedTodos, setSearchedTodos] = useState([]);
+  const [searchedValue, setSearchedValue] = useState("");
   const [id, setId] = useState(0);
 
   const addTodo = (newTodo) => {
@@ -54,6 +56,18 @@ const AppContainer = () => {
     }
   };
 
+  const handleSearch = () => {
+    setSearchedTodos(
+      todos.filter((todo) =>
+        todo.content.includes(searchedValue.toLocaleLowerCase())
+      )
+    );
+  };
+
+  useEffect(() => {
+    handleSearch();
+  }, [searchedValue, todos]);
+
   return (
     <div className="app-container">
       <TodoHeader
@@ -61,8 +75,18 @@ const AppContainer = () => {
         handleSubmit={addTodo}
         handleClearAll={handleClearAll}
       />
+      {todos.length > 0 && (
+        <input
+          type="text"
+          placeholder="search tasks"
+          value={searchedValue}
+          onChange={(event) => {
+            setSearchedValue(event.target.value);
+          }}
+        />
+      )}
       <TodoBody
-        todos={todos}
+        todos={searchedTodos.length > 0 ? searchedTodos : todos}
         handleChange={handleChange}
         handleDelete={handleDelete}
         handleCheck={handleCheck}
