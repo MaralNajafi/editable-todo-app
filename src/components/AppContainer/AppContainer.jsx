@@ -40,6 +40,9 @@ const AppContainer = () => {
 
   const handleDelete = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
+    setSearchedTodos((prev) => {
+      return [...prev.filter((todo) => todo.id !== id)];
+    });
   };
 
   const handleCheck = (id) => {
@@ -58,11 +61,12 @@ const AppContainer = () => {
   };
 
   const handleSearch = () => {
-    setSearchedTodos(
-      todos.filter((todo) =>
-        todo.content.toLocaleLowerCase().includes(searchedValue.toLocaleLowerCase())
-      )
+    const searchResult = todos.filter((todo) =>
+      todo.content
+        .toLocaleLowerCase()
+        .includes(searchedValue.toLocaleLowerCase())
     );
+    setSearchedTodos(searchResult);
   };
 
   useEffect(() => {
@@ -77,7 +81,10 @@ const AppContainer = () => {
         handleClearAll={handleClearAll}
       />
       {todos.length > 0 && (
-        <SearchTodo searchedValue={searchedValue} setSearchedValue={setSearchedValue}/>
+        <SearchTodo
+          searchedValue={searchedValue}
+          setSearchedValue={setSearchedValue}
+        />
       )}
       <TodoBody
         todos={searchedTodos.length > 0 ? searchedTodos : todos}
