@@ -60,7 +60,7 @@ const AppContainer = () => {
   const handleSearch = () => {
     setSearchedTodos(
       todos.filter((todo) =>
-        todo.content.includes(searchedValue.toLocaleLowerCase())
+        todo.content.toLocaleLowerCase().includes(searchedValue.toLocaleLowerCase())
       )
     );
   };
