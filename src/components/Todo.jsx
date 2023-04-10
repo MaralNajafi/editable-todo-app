@@ -8,7 +8,6 @@ export default function Todo({
   isChecked,
 }) {
   const [isReadonly, setIsReadonly] = useState(true);
-  // const [isChecked, setIsChecked] = useState(false);
   function handleBlur(event) {
     if (event.target.value === "" || !event.target.value) {
       handleDelete();
