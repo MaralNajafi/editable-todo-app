@@ -10,7 +10,6 @@ export default function TodosContainer({
   const todo = todos.map((todo) => {
     return (
       <>
-        <br />
         <Todo
           key={todo.id}
           content={todo.content}
@@ -28,5 +27,9 @@ export default function TodosContainer({
       </>
     );
   });
-  return <div>{todo}</div>;
+  if (todos.length === 0) {
+    return <p>No tasks yet</p>;
+  } else {
+    return <ul>{todo}</ul>;
+  }
 }

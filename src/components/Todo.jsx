@@ -14,7 +14,7 @@ export default function Todo({
     }
   }
   return (
-    <div>
+    <li>
       <input
         type="text"
         value={content}
@@ -29,6 +29,6 @@ export default function Todo({
       />
       <button onClick={handleDelete}>delete</button>
       <button onClick={handleCheck}>{isChecked ? "uncheck" : "check"}</button>
-    </div>
+    </li>
   );
 }
