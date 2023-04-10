@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 
-export default function Todo({ content, handleDelete, handleEdit }) {
+export default function Todo({
+  content,
+  handleDelete,
+  handleEdit,
+  handleCheck,
+  isChecked,
+}) {
   const [isReadonly, setIsReadonly] = useState(true);
-  const [isChecked, setIsChecked] = useState(false);
+  // const [isChecked, setIsChecked] = useState(false);
   function handleBlur(event) {
     if (event.target.value === "" || !event.target.value) {
       handleDelete();
@@ -19,17 +25,11 @@ export default function Todo({ content, handleDelete, handleEdit }) {
         onClick={() => {
           setIsReadonly(false);
         }}
-              onBlur={handleBlur}
-              onChange={handleEdit}
+        onBlur={handleBlur}
+        onChange={handleEdit}
       />
       <button onClick={handleDelete}>delete</button>
-      <button
-        onClick={() => {
-          setIsChecked(!isChecked);
-        }}
-      >
-        {isChecked ? "uncheck" : "check"}
-      </button>
+      <button onClick={handleCheck}>{isChecked ? "uncheck" : "check"}</button>
     </div>
   );
 }

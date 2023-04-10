@@ -14,20 +14,24 @@ export default function AppContainer() {
         content: newTodo,
         dateCreated: new Date().toLocaleTimeString(),
         isChecked: false,
-        isDisabled: false,
         id: id,
       },
     ]);
   }
 
-  function handleChange(event, id) {
-    const changeIndex = todos.findIndex((todo) => {
+  function findTodoIndex(id) {
+    const TodoIndex = todos.findIndex((todo) => {
       return todo.id === id;
     });
 
-    setTodos((prevTodos) => {
-      prevTodos[changeIndex].content = event.target.value;
-      return [...prevTodos];
+    return TodoIndex;
+  }
+
+  function handleChange(event, id) {
+    const TodoIndex = findTodoIndex(id);
+    setTodos((todos) => {
+      todos[TodoIndex].content = event.target.value;
+      return [...todos];
     });
   }
 
@@ -35,10 +39,24 @@ export default function AppContainer() {
     setTodos(todos.filter((todo) => todo.id !== id));
   }
 
+  function handleCheck(id) {
+    const TodoIndex = findTodoIndex(id);
+    const checkState = todos[TodoIndex].isChecked;
+    setTodos((todos) => {
+      todos[TodoIndex].isChecked = !checkState;
+      return [...todos];
+    });
+  }
+
   return (
     <>
       <TodoForm handleSubmit={addTodo} />
-      <TodosContainer todos={todos} handleChange={handleChange} handleDelete={handleDelete}/>
+      <TodosContainer
+        todos={todos}
+        handleChange={handleChange}
+        handleDelete={handleDelete}
+        handleCheck={handleCheck}
+      />
     </>
   );
 }
