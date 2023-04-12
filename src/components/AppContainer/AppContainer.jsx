@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import TodoHeader from "../TodoHeader/TodoHeader";
 import TodoBody from "../TodoBody/TodoBody";
 import SearchTodo from "../SearchTodo/SearchTodo";
-import "./AppContainer.css"
+import "./AppContainer.css";
 const AppContainer = () => {
   const [todos, setTodos] = useState([]);
   const [searchedTodos, setSearchedTodos] = useState([]);
@@ -54,6 +54,15 @@ const AppContainer = () => {
     });
   };
 
+  const handleCheckAll = () => {
+    setTodos((prev) => {
+      prev.forEach(todo => {
+        todo.isChecked = true;
+      })
+      return[...prev]
+    })
+  };
+
   const handleClearAll = () => {
     if (todos.length > 0) {
       setTodos([]);
@@ -79,6 +88,7 @@ const AppContainer = () => {
         todos={todos}
         handleSubmit={addTodo}
         handleClearAll={handleClearAll}
+        handleCheckAll={handleCheckAll}
       />
       {todos.length > 0 && (
         <SearchTodo

@@ -30,7 +30,7 @@ export default function Todo({
         value={content}
         readOnly={isReadonly}
         disabled={isChecked && true}
-        className={isChecked ? "checked" : ""}
+        className={`flex-grow-1 ${isChecked ? "checked" : ""}`}
         onClick={() => {
           setIsReadonly(false);
         }}
