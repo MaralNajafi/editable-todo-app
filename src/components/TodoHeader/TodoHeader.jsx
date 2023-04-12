@@ -1,4 +1,5 @@
 import React from "react";
+import "./TodoHeader.css"
 import TodoForm from "../TodoForm/TodoForm";
 export default function TodoHeader({
   handleSubmit,
@@ -6,7 +7,7 @@ export default function TodoHeader({
   todos,
 }) {
   return (
-    <div>
+    <div className="todo-header">
       <TodoForm handleSubmit={handleSubmit} />
       {todos.length > 0 && (
         <button onClick={handleClearAll}>clear all tasks</button>

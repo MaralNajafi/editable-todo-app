@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import "./Todo.css";
 
 export default function Todo({
   content,
@@ -11,18 +12,18 @@ export default function Todo({
   const editableInput = useRef();
 
   function handleBlur(event) {
-    setIsReadonly(true)
+    setIsReadonly(true);
     if (event.target.value === "" || !event.target.value) {
       handleDelete();
     }
   }
 
   function handleFocus() {
-    setIsReadonly(false)
+    setIsReadonly(false);
     editableInput.current.focus();
   }
   return (
-    <li className="todo">
+    <li className="todo d-flex flex-row jc-space-between ai-center">
       <input
         ref={editableInput}
         type="text"
@@ -36,9 +37,21 @@ export default function Todo({
         onBlur={handleBlur}
         onChange={handleEdit}
       />
-      <button onClick={handleFocus}>edit</button>
-      <button onClick={handleCheck}>{isChecked ? "uncheck" : "check"}</button>
-      <button onClick={handleDelete}>delete</button>
+      <div className="buttons d-flex flex-row gap-10px">
+        <button
+          className="edit-btn"
+          disabled={isChecked}
+          onClick={handleFocus}
+        >
+          edit
+        </button>
+        <button className="check-btn" onClick={handleCheck}>
+          {isChecked ? "uncheck" : "check"}
+        </button>
+        <button className="delete-btn" onClick={handleDelete}>
+          delete
+        </button>
+      </div>
     </li>
   );
 }

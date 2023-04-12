@@ -1,0 +1,7 @@
+.todo-header button {
+  padding: 6px 12px;
+  border-radius: 3px;
+  font-size: 14px;
+  text-transform: capitalize;
+  background-color: #f4f4f4;
+}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import TodoHeader from "../TodoHeader/TodoHeader";
 import TodoBody from "../TodoBody/TodoBody";
 import SearchTodo from "../SearchTodo/SearchTodo";
-
+import "./AppContainer.css"
 const AppContainer = () => {
   const [todos, setTodos] = useState([]);
   const [searchedTodos, setSearchedTodos] = useState([]);

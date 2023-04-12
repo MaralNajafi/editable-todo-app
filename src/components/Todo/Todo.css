@@ -1,0 +1,39 @@
+.todo {
+  background-color: #ffffff;
+  padding: 1rem;
+  margin-bottom: 12px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.todo input {
+  font-size: 16px;
+}
+.checked {
+  text-decoration: line-through;
+}
+
+.buttons button {
+  padding: 6px 12px;
+  border-radius: 3px;
+  font-size: 14px;
+  text-transform: capitalize;
+  color: #ffffff;
+}
+
+.edit-btn {
+  background-color: #ffc400;
+}
+
+.edit-btn:disabled {
+  background-color: #d2d2d2;
+  color: #a0a0a0;
+}
+
+.check-btn {
+  background-color: #0077ff;
+}
+
+.delete-btn {
+  background-color: #df0025;
+}
