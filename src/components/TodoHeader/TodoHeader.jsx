@@ -5,6 +5,7 @@ export default function TodoHeader({
   handleSubmit,
   handleClearAll,
   handleCheckAll,
+  handleUncheckAll,
   todos,
 }) {
   return (
@@ -14,6 +15,7 @@ export default function TodoHeader({
         <div className="d-flex flex-row gap-10px">
           <button onClick={handleClearAll}>clear all tasks</button>
           <button onClick={handleCheckAll}>check all</button>
+          <button onClick={handleUncheckAll}>uncheck all</button>
         </div>
       )}
     </div>

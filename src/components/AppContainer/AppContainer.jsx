@@ -63,6 +63,15 @@ const AppContainer = () => {
     });
   };
 
+  const handleUncheckAll = () => {
+    setTodos((prev) => {
+      prev.forEach((todo) => {
+        todo.isChecked = false;
+      });
+      return [...prev];
+    });
+  };
+
   const handleClearAll = () => {
     if (todos.length > 0) {
       setTodos([]);
@@ -89,6 +98,7 @@ const AppContainer = () => {
         handleSubmit={addTodo}
         handleClearAll={handleClearAll}
         handleCheckAll={handleCheckAll}
+        handleUncheckAll={handleUncheckAll}
       />
       {todos.length > 0 && (
         <SearchTodo
