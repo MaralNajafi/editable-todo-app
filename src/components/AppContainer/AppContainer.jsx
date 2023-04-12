@@ -56,11 +56,11 @@ const AppContainer = () => {
 
   const handleCheckAll = () => {
     setTodos((prev) => {
-      prev.forEach(todo => {
+      prev.forEach((todo) => {
         todo.isChecked = true;
-      })
-      return[...prev]
-    })
+      });
+      return [...prev];
+    });
   };
 
   const handleClearAll = () => {

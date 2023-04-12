@@ -1,7 +1,12 @@
 import React from "react";
 import "./TodoHeader.css";
 import TodoForm from "../TodoForm/TodoForm";
-export default function TodoHeader({ handleSubmit, handleClearAll, handleCheckAll, todos }) {
+export default function TodoHeader({
+  handleSubmit,
+  handleClearAll,
+  handleCheckAll,
+  todos,
+}) {
   return (
     <div className="todo-header">
       <TodoForm handleSubmit={handleSubmit} />

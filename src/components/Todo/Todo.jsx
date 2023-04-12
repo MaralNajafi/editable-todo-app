@@ -38,11 +38,7 @@ export default function Todo({
         onChange={handleEdit}
       />
       <div className="buttons d-flex flex-row gap-10px">
-        <button
-          className="edit-btn"
-          disabled={isChecked}
-          onClick={handleFocus}
-        >
+        <button className="edit-btn" disabled={isChecked} onClick={handleFocus}>
           edit
         </button>
         <button className="check-btn" onClick={handleCheck}>
