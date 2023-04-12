@@ -71,7 +71,7 @@ const AppContainer = () => {
 
   useEffect(() => {
     handleSearch();
-  }, [searchedValue, todos]);
+  }, [searchedValue, todos.length]);
 
   return (
     <div className="app-container">
