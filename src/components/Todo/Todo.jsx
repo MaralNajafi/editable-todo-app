@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 export default function Todo({
   content,
@@ -8,14 +8,23 @@ export default function Todo({
   isChecked,
 }) {
   const [isReadonly, setIsReadonly] = useState(true);
+  const editableInput = useRef();
+
   function handleBlur(event) {
+    setIsReadonly(true)
     if (event.target.value === "" || !event.target.value) {
       handleDelete();
     }
   }
+
+  function handleFocus() {
+    setIsReadonly(false)
+    editableInput.current.focus();
+  }
   return (
-    <li>
+    <li className="todo">
       <input
+        ref={editableInput}
         type="text"
         value={content}
         readOnly={isReadonly}
@@ -27,8 +36,9 @@ export default function Todo({
         onBlur={handleBlur}
         onChange={handleEdit}
       />
-      <button onClick={handleDelete}>delete</button>
+      <button onClick={handleFocus}>edit</button>
       <button onClick={handleCheck}>{isChecked ? "uncheck" : "check"}</button>
+      <button onClick={handleDelete}>delete</button>
     </li>
   );
 }
