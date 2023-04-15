@@ -34,8 +34,8 @@
   height: 100%;
 }
 
-.todo-input input:focus {
-  color: #414141;
+.todo-input:focus {
+  color: blue;
 }
 
 .deleted {
