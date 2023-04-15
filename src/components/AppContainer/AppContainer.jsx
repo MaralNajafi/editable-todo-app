@@ -10,7 +10,7 @@ const AppContainer = () => {
   const [id, setId] = useState(0);
 
   const addTodo = (newTodo) => {
-    setId(id + 1);
+    setId(new Date().getTime());
     setTodos([
       ...todos,
       {
@@ -32,63 +32,59 @@ const AppContainer = () => {
 
   const handleChange = (event, id) => {
     const TodoIndex = findTodoIndex(id);
-    setTodos((todos) => {
-      todos[TodoIndex].content = event.target.value;
-      return [...todos];
-    });
+    const newTodos = [...todos];
+    newTodos[TodoIndex].content = event.target.value;
+    setTodos(newTodos);
   };
 
   const handleDelete = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-    setSearchedTodos((prev) => {
-      return [...prev.filter((todo) => todo.id !== id)];
+    const newTodos = todos.filter((todo) => {
+      return todo.id !== id;
     });
+    setTodos(newTodos);
   };
 
   const handleCheck = (id) => {
     const TodoIndex = findTodoIndex(id);
-    const checkState = todos[TodoIndex].isChecked;
-    setTodos((todos) => {
-      todos[TodoIndex].isChecked = !checkState;
-      return [...todos];
-    });
+    const newTodos = [...todos];
+    newTodos[TodoIndex].isChecked = !newTodos[TodoIndex].isChecked;
+    setTodos(newTodos);
   };
 
   const handleCheckAll = () => {
-    setTodos((prev) => {
-      prev.forEach((todo) => {
-        todo.isChecked = true;
-      });
-      return [...prev];
+    const newTodos = [...todos];
+    newTodos.forEach((todo) => {
+      todo.isChecked = true;
     });
+    setTodos(newTodos);
   };
 
   const handleUncheckAll = () => {
-    setTodos((prev) => {
-      prev.forEach((todo) => {
-        todo.isChecked = false;
-      });
-      return [...prev];
+    const newTodos = [...todos];
+    newTodos.forEach((todo) => {
+      todo.isChecked = false;
     });
+    setTodos(newTodos);
   };
 
   const handleClearAll = () => {
-    if (todos.length > 0) {
-      setTodos([]);
-    }
+    setTodos([]);
   };
 
   const handleSearch = () => {
+    if (searchedValue === "") return setSearchedTodos(todos);
+    if (todos.length === 0) return setSearchedTodos([]);
+
     const searchResult = todos.filter((todo) =>
-      todo.content
-        .toLocaleLowerCase()
-        .includes(searchedValue.toLocaleLowerCase())
+      todo.content.toLowerCase().includes(searchedValue.toLocaleLowerCase())
     );
     setSearchedTodos(searchResult);
   };
 
   useEffect(() => {
     handleSearch();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchedValue, todos.length]);
 
   return (
@@ -107,7 +103,7 @@ const AppContainer = () => {
         />
       )}
       <TodoBody
-        todos={searchedTodos.length > 0 ? searchedTodos : todos}
+        todos={searchedTodos}
         handleChange={handleChange}
         handleDelete={handleDelete}
         handleCheck={handleCheck}
