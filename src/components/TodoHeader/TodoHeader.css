@@ -1,7 +1,22 @@
 .todo-header button {
   padding: 6px 12px;
-  border-radius: 3px;
+  border-radius: 5px;
   font-size: 14px;
   text-transform: capitalize;
-  background-color: #f4f4f4;
+  background-color: #e9ecff;
+  color: blue;
+  transition: all 100ms;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.todo-header button:hover {
+  background-color: #e0e4ff;
+}
+
+.todo-header button:active{
+  box-shadow: none;
+}
+
+.s{
+  color: #6f6f6f;
 }

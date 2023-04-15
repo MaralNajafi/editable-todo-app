@@ -1,14 +1,19 @@
 import React, { useState } from "react";
-import "./TodoForm.css"
-export default function TodoForm({handleSubmit}) {
+import "./TodoForm.css";
+import SVG from "../SVG/SVG";
+
+export default function TodoForm({ handleSubmit }) {
   const [inputValue, setInputValue] = useState("");
   function handleSubmitForm(e) {
     e.preventDefault();
-    handleSubmit(inputValue)
+    handleSubmit(inputValue);
     setInputValue("");
   }
   return (
-    <form className="todo-form d-flex flex-row jc-space-between gap-10px" onSubmit={handleSubmitForm}>
+    <form
+      className="todo-form d-flex flex-row jc-space-between gap-10px"
+      onSubmit={handleSubmitForm}
+    >
       <input
         value={inputValue}
         placeholder="Type your task..."
@@ -20,7 +25,9 @@ export default function TodoForm({handleSubmit}) {
         required
         className="flex-grow-1"
       />
-      <button type="submit">Add</button>
+      <button type="submit">
+        <SVG id={"add"}/>
+      </button>
     </form>
   );
 }
