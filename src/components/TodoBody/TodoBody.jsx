@@ -11,8 +11,11 @@ export default function TodosBody({
     return (
       <Todo
         key={todo.id}
+        dateCreated={todo.dateCreated}
+        dateModified={todo.dateModified}
         content={todo.content}
         isChecked={todo.isChecked}
+        isDeleted={todo.isDeleted}
         handleDelete={() => {
           handleDelete(todo.id);
         }}
@@ -28,6 +31,6 @@ export default function TodosBody({
   if (todos.length === 0) {
     return <p>No tasks yet</p>;
   } else {
-    return <ol>{todo}</ol>;
+    return <ul className="d-flex flex-col gap-20px">{todo}</ul>;
   }
 }

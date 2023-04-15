@@ -1,19 +1,13 @@
 @import "Reset";
 @import "Utilities";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600");
+:root {
+  --ff-main: "Open Sans", sans-serif;
+
+}
+
 *,
 *::after,
 *::before {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.d-none {
-  display: none;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  font-family: var(--ff-main)
 }

@@ -1,25 +1,9 @@
-.background {
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: auto;
-  background-attachment: fixed;
-}
-
 .d-none {
   display: none;
 }
 
 .d-block {
   display: block;
-}
-
-@media (max-width: 800px) {
-  .responsive-d-flex {
-    display: flex;
-  }
-  .responsive-d-none {
-    display: none;
-  }
 }
 
 .d-flex {
@@ -66,7 +50,7 @@
   flex-grow: 1;
 }
 
-.flex-wrap{
+.flex-wrap {
   flex-wrap: wrap;
 }
 
@@ -94,6 +78,6 @@
   cursor: pointer;
 }
 
-.white-space-nw{
+.white-space-nw {
   white-space: nowrap;
 }

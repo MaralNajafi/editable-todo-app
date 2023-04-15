@@ -15,8 +15,10 @@ const AppContainer = () => {
       ...todos,
       {
         content: newTodo,
-        dateCreated: new Date().toLocaleTimeString(),
+        dateCreated: new Date().toLocaleString(),
+        dateModified: null,
         isChecked: false,
+        isDeleted: false,
         id: id,
       },
     ]);
@@ -32,16 +34,26 @@ const AppContainer = () => {
 
   const handleChange = (event, id) => {
     const TodoIndex = findTodoIndex(id);
+    const newContent = event.target.value;
     const newTodos = [...todos];
-    newTodos[TodoIndex].content = event.target.value;
+
+    newTodos[TodoIndex].content = newContent;
+    newTodos[TodoIndex].dateModified = new Date().toLocaleString();
+
     setTodos(newTodos);
   };
 
   const handleDelete = (id) => {
-    const newTodos = todos.filter((todo) => {
-      return todo.id !== id;
-    });
+    const TodoIndex = findTodoIndex(id);
+    const newTodos = [...todos];
+    newTodos[TodoIndex].isDeleted = true;
     setTodos(newTodos);
+    setTimeout(() => {
+      const newTodos = todos.filter((todo) => {
+        return todo.id !== id;
+      });
+      setTodos(newTodos);
+    }, 250);
   };
 
   const handleCheck = (id) => {
@@ -68,7 +80,14 @@ const AppContainer = () => {
   };
 
   const handleClearAll = () => {
-    setTodos([]);
+    const newTodos = [...todos];
+    newTodos.forEach((todo) => {
+      todo.isDeleted = true;
+    });
+    setTodos(newTodos);
+    setTimeout(() => {
+      setTodos([]);
+    }, 250);
   };
 
   const handleSearch = () => {
@@ -88,26 +107,28 @@ const AppContainer = () => {
   }, [searchedValue, todos.length]);
 
   return (
-    <div className="app-container">
-      <TodoHeader
-        todos={todos}
-        handleSubmit={addTodo}
-        handleClearAll={handleClearAll}
-        handleCheckAll={handleCheckAll}
-        handleUncheckAll={handleUncheckAll}
-      />
-      {todos.length > 0 && (
-        <SearchTodo
-          searchedValue={searchedValue}
-          setSearchedValue={setSearchedValue}
+    <div className="app-container d-flex jc-center ai-center">
+      <div className="todo-app">
+        <TodoHeader
+          todos={todos}
+          handleSubmit={addTodo}
+          handleClearAll={handleClearAll}
+          handleCheckAll={handleCheckAll}
+          handleUncheckAll={handleUncheckAll}
         />
-      )}
-      <TodoBody
-        todos={searchedTodos}
-        handleChange={handleChange}
-        handleDelete={handleDelete}
-        handleCheck={handleCheck}
-      />
+        {todos.length > 0 && (
+          <SearchTodo
+            searchedValue={searchedValue}
+            setSearchedValue={setSearchedValue}
+          />
+        )}
+        <TodoBody
+          todos={searchedTodos}
+          handleChange={handleChange}
+          handleDelete={handleDelete}
+          handleCheck={handleCheck}
+        />
+      </div>
     </div>
   );
 };

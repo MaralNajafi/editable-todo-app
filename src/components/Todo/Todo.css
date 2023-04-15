@@ -1,39 +1,77 @@
 .todo {
+  visibility: visible;
+  opacity: 1;
+  transition: all 100ms;
+}
+.todo-field {
+  position: relative;
   background-color: #ffffff;
   padding: 1rem;
   margin-bottom: 12px;
-  border-radius: 5px;
+  border-radius: 3px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  transition: all 200ms;
 }
 
-.todo input {
+.todo-input {
+  margin-left: 10px;
+  margin-right: 1rem;
   font-size: 16px;
 }
+
+.input-underline {
+  position: absolute;
+  left: 0;
+  width: 2px;
+  height: 0%;
+  border-radius: 5px;
+  background-color: blue;
+  overflow: hidden;
+  transition: all 250ms;
+}
+
+.todo-input:focus ~ .input-underline {
+  height: 100%;
+}
+
+.todo-input input:focus {
+  color: #414141;
+}
+
+.deleted {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .checked {
   text-decoration: line-through;
 }
 
-.buttons button {
-  padding: 6px 12px;
-  border-radius: 3px;
-  font-size: 14px;
+.todo-field button {
+  background-color: #f4f4f4;
+  padding: 8px;
+  border-radius: 5px;
+  color: #8c8c8c;
+  transition: all 100ms;
+}
+
+.todo-field button:disabled {
+  color: #ccc;
+  background-color: #f4f4f4;
+}
+
+.delete-btn:hover {
+  background-color: rgba(255, 0, 0, 0.1);
+  color: rgba(255, 0, 0, 0.75);
+}
+
+.edit-btn:hover {
+  background-color: rgba(255, 174, 0, 0.1);
+  color: rgba(255, 174, 0, 0.75);
+}
+
+.todo-date {
+  color: #8c8c8c;
+  font-size: 11px;
   text-transform: capitalize;
-  color: #ffffff;
-}
-
-.edit-btn {
-  background-color: #ffc400;
-}
-
-.edit-btn:disabled {
-  background-color: #d2d2d2;
-  color: #a0a0a0;
-}
-
-.check-btn {
-  background-color: #0077ff;
-}
-
-.delete-btn {
-  background-color: #df0025;
 }
