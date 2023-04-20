@@ -28,7 +28,7 @@ export default function Todo({
   }
   return (
     <li className={`todo ${isDeleted ? "deleted" : ""}`}>
-      <div className="todo-field d-flex flex-row jc-space-between ai-center ">
+      <div className="todo-field d-flex flex-row ai-center ">
         <button onClick={handleCheck}>
           <SVG id={"check"} fill={isChecked ? "blue" : "transparent"} />
         </button>

@@ -108,7 +108,7 @@ const AppContainer = () => {
 
   return (
     <div className="app-container d-flex jc-center ai-center">
-      <div className="todo-app">
+      <div className="todo-app d-flex flex-col">
         <TodoHeader
           todos={todos}
           handleSubmit={addTodo}

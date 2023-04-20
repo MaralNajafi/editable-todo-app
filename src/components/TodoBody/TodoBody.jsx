@@ -1,5 +1,6 @@
 import React from "react";
 import Todo from "../Todo/Todo";
+import "./TodoBody.css";
 
 export default function TodosBody({
   todos,
@@ -28,9 +29,10 @@ export default function TodosBody({
       />
     );
   });
-  if (todos.length === 0) {
-    return <p>No tasks yet</p>;
-  } else {
-    return <ul className="d-flex flex-col gap-20px">{todo}</ul>;
-  }
+  return (
+    <div className={`todo-body flex-grow-1 ${todos.length === 0 ? "d-flex jc-center ai-center" : ""}`}>
+      {todos.length === 0 ? <p>No tasks yet</p> : <ul className="d-flex flex-col gap-20px">{todo}</ul>}
+      
+    </div>
+  );
 }

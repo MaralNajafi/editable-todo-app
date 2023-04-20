@@ -1,0 +1,7 @@
+.todo-body {
+  overflow-y: auto;
+  padding: 10px;
+}
+.todo-body p {
+  color: #9c9c9c;
+}

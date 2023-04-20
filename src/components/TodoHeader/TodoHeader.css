@@ -1,3 +1,7 @@
+.todo-header{
+  padding-inline: 8px;
+}
+
 .todo-header button {
   padding: 6px 12px;
   border-radius: 5px;
