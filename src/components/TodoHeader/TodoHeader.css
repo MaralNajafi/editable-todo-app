@@ -1,5 +1,12 @@
-.todo-header{
+.todo-header {
   padding-inline: 8px;
+}
+
+.todo-header h1 {
+  color: blue;
+  text-transform: capitalize;
+  margin-bottom: 2rem;
+  font-family: var(--ff-comic);
 }
 
 .todo-header button {
@@ -17,10 +24,6 @@
   background-color: #e0e4ff;
 }
 
-.todo-header button:active{
+.todo-header button:active {
   box-shadow: none;
-}
-
-.s{
-  color: #6f6f6f;
 }
