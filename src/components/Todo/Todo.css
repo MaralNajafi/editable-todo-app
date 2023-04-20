@@ -56,11 +56,16 @@
   border-radius: 5px;
   color: #8c8c8c;
   transition: all 100ms;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .todo-field button:disabled {
   color: #ccc;
   background-color: #f4f4f4;
+}
+
+.todo-field button:active {
+  box-shadow: none;
 }
 
 .delete-btn:hover {
@@ -71,6 +76,11 @@
 .edit-btn:hover {
   background-color: rgba(255, 174, 0, 0.1);
   color: rgba(255, 174, 0, 0.75);
+}
+
+.editing {
+  background-color: rgba(255, 174, 0, 0.1) !important;
+  color: rgba(255, 174, 0, 0.75) !important;
 }
 
 .todo-date {

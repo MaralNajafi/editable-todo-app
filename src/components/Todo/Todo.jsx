@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import "./Todo.css";
 import SVG from "../SVG/SVG";
+import { useState } from "react";
 
 export default function Todo({
   content,
@@ -13,14 +14,18 @@ export default function Todo({
   isDeleted,
 }) {
   const editableInput = useRef();
+  const [isEditing , setIsEditing] = useState(false)
 
   function handleBlur(event) {
     if (event.target.innerText === "" || !event.target.innerText) {
       handleDelete();
     }
+
+    setIsEditing(false)
   }
 
   function handleFocus() {
+    setIsEditing(true);
     editableInput.current.focus();
   }
   return (
@@ -36,13 +41,16 @@ export default function Todo({
           className={`flex-grow-1 todo-input ${isChecked ? "checked" : ""}`}
           onBlur={handleBlur}
           onChange={handleEdit}
+          onFocus={() => {
+            setIsEditing(true)
+          }}
         >
           {content}
         </span>
         <span className="input-underline"></span>
         <div className="buttons d-flex flex-row gap-10px">
           <button
-            className="edit-btn"
+            className={`edit-btn ${isEditing ? "editing" : ""}`}
             onClick={handleFocus}
             disabled={isChecked}
           >
