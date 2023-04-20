@@ -1,9 +1,12 @@
 .app-container{
     min-height: 100vh;
-    padding: 1rem;
+    padding-inline: 3rem;
+    font-family: var(--ff-main)
 }
 .todo-app{
+    margin-top: 2rem;
     background-color: #ffffff;
+    align-self: center;
     height: 550px;
     width: 100%;
     max-width: 600px;

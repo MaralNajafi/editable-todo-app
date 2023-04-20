@@ -1,0 +1,29 @@
+.main-footer {
+  margin-top: auto;
+  font-family: var(--ff-Poppins);
+}
+
+.main-footer__data {
+  font-size: 12px;
+  margin-top: 3rem;
+  padding-block: 2rem;
+  border-top: 1px solid #cbcbcb;
+  gap: 3rem;
+}
+
+.main-footer__data a:hover {
+  color: blue;
+}
+
+.main-footer__data ul li {
+  font-size: 1.2em;
+  text-transform: capitalize;
+}
+
+.main-footer__data .nested-ul {
+  margin-top: 5px;
+}
+
+.main-footer__data .nested-ul li {
+  font-size: 1em;
+}

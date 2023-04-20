@@ -3,6 +3,7 @@ import TodoHeader from "../TodoHeader/TodoHeader";
 import TodoBody from "../TodoBody/TodoBody";
 import SearchTodo from "../SearchTodo/SearchTodo";
 import "./AppContainer.css";
+import MainFooter from "../MainFooter/MainFooter"
 const AppContainer = () => {
   const [todos, setTodos] = useState([]);
   const [searchedTodos, setSearchedTodos] = useState([]);
@@ -107,7 +108,7 @@ const AppContainer = () => {
   }, [searchedValue, todos.length]);
 
   return (
-    <div className="app-container d-flex jc-center ai-center">
+    <div className="app-container d-flex flex-col">
       <div className="todo-app d-flex flex-col">
         <TodoHeader
           todos={todos}
@@ -129,6 +130,7 @@ const AppContainer = () => {
           handleCheck={handleCheck}
         />
       </div>
+      <MainFooter />
     </div>
   );
 };
