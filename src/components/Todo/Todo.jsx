@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import "./Todo.css";
 import SVG from "../SVG/SVG";
 
@@ -12,18 +12,15 @@ export default function Todo({
   isChecked,
   isDeleted,
 }) {
-  const [isReadonly, setIsReadonly] = useState(true);
   const editableInput = useRef();
 
   function handleBlur(event) {
-    setIsReadonly(true);
-    if (event.target.value === "" || !event.target.value) {
+    if (event.target.innerText === "" || !event.target.innerText) {
       handleDelete();
     }
   }
 
   function handleFocus() {
-    setIsReadonly(false);
     editableInput.current.focus();
   }
   return (
@@ -33,19 +30,15 @@ export default function Todo({
           <SVG id={"check"} fill={isChecked ? "blue" : "transparent"} />
         </button>
 
-        <input
+        <span
+          contenteditable={isChecked ? false : ""}
           ref={editableInput}
-          type="text"
-          value={content}
-          readOnly={isReadonly}
-          disabled={isChecked && true}
           className={`flex-grow-1 todo-input ${isChecked ? "checked" : ""}`}
-          onClick={() => {
-            setIsReadonly(false);
-          }}
           onBlur={handleBlur}
           onChange={handleEdit}
-        />
+        >
+          {content}
+        </span>
         <span className="input-underline"></span>
         <div className="buttons d-flex flex-row gap-10px">
           <button

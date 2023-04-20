@@ -37,6 +37,8 @@
 
 .todo-input:focus {
   color: blue;
+  border: none;
+  outline: none;
 }
 
 .deleted {

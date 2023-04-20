@@ -3,7 +3,7 @@ import TodoHeader from "../TodoHeader/TodoHeader";
 import TodoBody from "../TodoBody/TodoBody";
 import SearchTodo from "../SearchTodo/SearchTodo";
 import "./AppContainer.css";
-import MainFooter from "../MainFooter/MainFooter"
+import MainFooter from "../MainFooter/MainFooter";
 const AppContainer = () => {
   const [todos, setTodos] = useState([]);
   const [searchedTodos, setSearchedTodos] = useState([]);
@@ -35,7 +35,7 @@ const AppContainer = () => {
 
   const handleChange = (event, id) => {
     const TodoIndex = findTodoIndex(id);
-    const newContent = event.target.value;
+    const newContent = event.target.innerText;
     const newTodos = [...todos];
 
     newTodos[TodoIndex].content = newContent;
