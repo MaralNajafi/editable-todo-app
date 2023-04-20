@@ -1,15 +1,22 @@
-.app-container{
-    min-height: 100vh;
-    padding-inline: 3rem;
-    font-family: var(--ff-main)
+.app-container {
+  min-height: 100vh;
+  padding-inline: 3rem;
+  font-family: var(--ff-main);
 }
-.todo-app{
-    margin-top: 2rem;
-    background-color: #ffffff;
-    align-self: center;
-    height: 550px;
-    width: 100%;
-    max-width: 600px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    padding: 1rem;
+.todo-app {
+  margin-top: 2rem;
+  background-color: #ffffff;
+  align-self: center;
+  height: 550px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  padding: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+  .todo-app {
+    box-shadow: none;
+  }
 }
