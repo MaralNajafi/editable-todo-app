@@ -37,7 +37,6 @@ const AppContainer = () => {
     const TodoIndex = findTodoIndex(id);
     const newContent = event.target.innerText;
     const newTodos = [...todos];
-
     newTodos[TodoIndex].content = newContent;
     newTodos[TodoIndex].dateModified = new Date().toLocaleString();
 

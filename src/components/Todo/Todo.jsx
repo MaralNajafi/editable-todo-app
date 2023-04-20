@@ -14,14 +14,15 @@ export default function Todo({
   isDeleted,
 }) {
   const editableInput = useRef();
-  const [isEditing , setIsEditing] = useState(false)
+  const [isEditing, setIsEditing] = useState(false);
 
   function handleBlur(event) {
     if (event.target.innerText === "" || !event.target.innerText) {
       handleDelete();
     }
+    handleEdit(event);
 
-    setIsEditing(false)
+    setIsEditing(false);
   }
 
   function handleFocus() {
@@ -36,13 +37,12 @@ export default function Todo({
         </button>
 
         <span
-          contenteditable={isChecked ? false : ""}
+          contentEditable={isChecked ? false : ""}
           ref={editableInput}
           className={`flex-grow-1 todo-input ${isChecked ? "checked" : ""}`}
-          onBlur={handleBlur}
-          onChange={handleEdit}
+          onBlur={ handleBlur}
           onFocus={() => {
-            setIsEditing(true)
+            setIsEditing(true);
           }}
         >
           {content}
