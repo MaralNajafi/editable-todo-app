@@ -62,8 +62,8 @@ export default function Todo({
         </div>
       </div>
       <div className="todo-date">
-        <div>date created: {dateCreated}</div>
-        {dateModified && <div>Date modified: {dateModified}</div>}
+        <div>created: {dateCreated}</div>
+        {dateModified && <div>modified: {dateModified}</div>}
       </div>
     </li>
   );
