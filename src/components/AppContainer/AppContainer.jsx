@@ -30,9 +30,9 @@ const AppContainer = () => {
     localStorage.setItem("todo list", JSON.stringify(todos));
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     addTodosToLocalStorage();
+    // eslint-disable-next-line
   }, [todos]);
 
   const findTodoIndex = (id) => {
