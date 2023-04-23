@@ -40,7 +40,7 @@ const AppContainer = () => {
     const newTodos = [...todos];
     if (newContent !== prevContent) {
       newTodos[TodoIndex].content = newContent;
-      newTodos[TodoIndex].dateModified = new Date().toLocaleString();
+      newTodos[TodoIndex].dateModified = new Date().toUTCString();
       setTodos(newTodos);
     } else {
       return
