@@ -5,7 +5,9 @@ import SearchTodo from "../SearchTodo/SearchTodo";
 import "./AppContainer.css";
 import MainFooter from "../MainFooter/MainFooter";
 const AppContainer = () => {
-  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("todo list")) || []);
+  const [todos, setTodos] = useState(
+    JSON.parse(localStorage.getItem("todo list")) || []
+  );
   const [searchedTodos, setSearchedTodos] = useState([]);
   const [searchedValue, setSearchedValue] = useState("");
   const [id, setId] = useState(new Date().getTime());
@@ -28,6 +30,7 @@ const AppContainer = () => {
     localStorage.setItem("todo list", JSON.stringify(todos));
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     addTodosToLocalStorage();
   }, [todos]);
