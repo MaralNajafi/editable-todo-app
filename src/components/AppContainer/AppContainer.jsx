@@ -5,11 +5,10 @@ import SearchTodo from "../SearchTodo/SearchTodo";
 import "./AppContainer.css";
 import MainFooter from "../MainFooter/MainFooter";
 const AppContainer = () => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("todo list")) || []);
   const [searchedTodos, setSearchedTodos] = useState([]);
   const [searchedValue, setSearchedValue] = useState("");
-  const [id, setId] = useState(0);
-
+  const [id, setId] = useState(new Date().getTime());
   const addTodo = (newTodo) => {
     setId(new Date().getTime());
     setTodos([
@@ -24,6 +23,14 @@ const AppContainer = () => {
       },
     ]);
   };
+
+  const addTodosToLocalStorage = () => {
+    localStorage.setItem("todo list", JSON.stringify(todos));
+  };
+
+  useEffect(() => {
+    addTodosToLocalStorage();
+  }, [todos]);
 
   const findTodoIndex = (id) => {
     const TodoIndex = todos.findIndex((todo) => {
@@ -43,9 +50,8 @@ const AppContainer = () => {
       newTodos[TodoIndex].dateModified = new Date().toLocaleString();
       setTodos(newTodos);
     } else {
-      return
+      return;
     }
-
   };
 
   const handleDelete = (id) => {
