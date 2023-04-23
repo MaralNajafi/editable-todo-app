@@ -36,11 +36,16 @@ const AppContainer = () => {
   const handleChange = (event, id) => {
     const TodoIndex = findTodoIndex(id);
     const newContent = event.target.innerText;
+    const prevContent = todos[TodoIndex].content;
     const newTodos = [...todos];
-    newTodos[TodoIndex].content = newContent;
-    newTodos[TodoIndex].dateModified = new Date().toLocaleString();
+    if (newContent !== prevContent) {
+      newTodos[TodoIndex].content = newContent;
+      newTodos[TodoIndex].dateModified = new Date().toLocaleString();
+      setTodos(newTodos);
+    } else {
+      return
+    }
 
-    setTodos(newTodos);
   };
 
   const handleDelete = (id) => {
