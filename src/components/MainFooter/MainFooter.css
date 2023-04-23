@@ -1,14 +1,12 @@
 .main-footer {
   margin-top: auto;
+  padding-block: 2rem;
   font-family: var(--ff-Poppins);
+  background-color: #f4f4f4;
 }
 
 .main-footer__data {
   font-size: 12px;
-  margin-top: 3rem;
-  padding-block: 2rem;
-  border-top: 1px solid #cbcbcb;
-  gap: 3rem;
 }
 
 .main-footer__data a:hover {

@@ -5,8 +5,9 @@
 .todo-header h1 {
   color: blue;
   text-transform: capitalize;
-  margin-bottom: 2rem;
-  font-family: var(--ff-comic);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+  font-family: var(--ff-Poppins);
 }
 
 .todo-header button {

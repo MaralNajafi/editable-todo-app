@@ -48,6 +48,8 @@
 
 .checked {
   text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  color: #8c8c8c;
 }
 
 .todo-field button {
