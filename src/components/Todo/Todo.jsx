@@ -40,7 +40,7 @@ export default function Todo({
           contentEditable={isChecked ? false : ""}
           ref={editableInput}
           className={`flex-grow-1 todo-input ${isChecked ? "checked" : ""}`}
-          onBlur={ handleBlur}
+          onBlur={handleBlur}
           onFocus={() => {
             setIsEditing(true);
           }}
@@ -62,8 +62,11 @@ export default function Todo({
         </div>
       </div>
       <div className="todo-date">
-        <div>created: {dateCreated}</div>
-        {dateModified && <div>modified: {dateModified}</div>}
+        {dateModified ? (
+          <div>modified: {dateModified}</div>
+        ) : (
+          <div>created: {dateCreated}</div>
+        )}
       </div>
     </li>
   );
