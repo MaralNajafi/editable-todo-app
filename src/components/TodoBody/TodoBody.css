@@ -5,3 +5,7 @@
 .todo-body p {
   color: #9c9c9c;
 }
+
+.todo-body ul {
+  flex-direction: column-reverse;
+}

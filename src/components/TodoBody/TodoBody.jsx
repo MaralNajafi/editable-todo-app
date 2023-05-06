@@ -31,7 +31,7 @@ export default function TodosBody({
   });
   return (
     <div className={`todo-body flex-grow-1 ${todos.length === 0 ? "d-flex jc-center ai-center" : ""}`}>
-      {todos.length === 0 ? <p>No tasks yet</p> : <ul className="d-flex flex-col gap-20px">{todo}</ul>}
+      {todos.length === 0 ? <p>No tasks yet</p> : <ul className="d-flex gap-20px">{todo}</ul>}
       
     </div>
   );
